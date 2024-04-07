@@ -8,7 +8,6 @@ function App() {
   return (
     <div className={classes.App}>
       <header>
-        <h1 className={classes.visually_hidden}>Заголовок главной страницы</h1>
         <Navigation/>
       </header>
       <Router/>

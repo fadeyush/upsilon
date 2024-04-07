@@ -1,0 +1,41 @@
+.productItem {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    img {
+        width: auto;
+        max-width: 220px;
+    }
+}
+
+.productItem__header {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.productItem__wrapper {
+    display: flex;
+    gap: 70px;
+    align-items: center;
+}
+
+.productItem__title {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.productItem__Infowrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.productItem__price {
+    font-size: 24px;
+}
+
+.productItem__description {
+    font-size: 18px;
+}
+ 
