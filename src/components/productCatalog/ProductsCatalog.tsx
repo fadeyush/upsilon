@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import classes from './ProductsCatalog.module.scss'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import ProductItem from '../productItem/ProductItem';
+import ProductCatalogItem from '../productCatalogItem/ProductCatalogItem';
 import { ButtonArrProps } from '../../types/button';
 import { fetchProducts } from '../../store/action-creator.ts/fetchProducts';
 import MyButton from '../UI/button/MyButton';
@@ -26,7 +26,7 @@ const ProductsCatalog: FC = () => {
     }
 
     return (
-        <section className={classes.productsCatalog}>
+        <section>
             <h2 className={classes.productsCatalog__title}>Карточки товаров</h2>
             <div  className={classes.productsCatalog__buttonWrapper}>
                 {buttonArr.map(button=>
@@ -40,7 +40,7 @@ const ProductsCatalog: FC = () => {
             :
             <ul className={classes.productsCatalog__list}>    
                 {products.map(product=>
-                    <ProductItem key={product.id} id={product.id} title={product.title} price={product.price} image={product.image}/>
+                    <ProductCatalogItem key={product.id} id={product.id} title={product.title} price={product.price} image={product.image}/>
                 )}
             </ul>
             }

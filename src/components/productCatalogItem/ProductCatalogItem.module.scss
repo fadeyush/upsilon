@@ -1,4 +1,4 @@
-.productItem {
+.productCatalogItem {
     width: 200px;
     height: 300px;
 
@@ -21,7 +21,7 @@
     text-align: center;
 }
 
-.productItem__title {
+.productCatalogItem__title {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,6 +29,6 @@
     margin-bottom: 10px;
 }
 
-.productItem__price {
+.productCatalogItem__price {
     font-size: 20px;
 }
