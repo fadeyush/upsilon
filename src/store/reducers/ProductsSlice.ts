@@ -11,18 +11,19 @@ export const productSlice = createSlice({
     name: 'product',
     initialState,
     reducers: {
-        fetchProducts(state) {
+        productsFetching(state) {
             state.isLoading = true; 
         },
-        fetchProductsSuccess(state, action: PayloadAction<ProductState[]>) {
+        productsFetchingSuccess(state, action: PayloadAction<ProductState[]>) {
             state.isLoading = false; 
             state.products = action.payload;
+            state.error = '';
         },
-        fetchProductsError(state, action: PayloadAction<string>) {
+        productsFetchingError(state, action: PayloadAction<string>) {
             state.isLoading = false; 
             state.error = action.payload;
         }
-    }
+    },
 });
 
 export default productSlice.reducer;
