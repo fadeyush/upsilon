@@ -8,7 +8,7 @@ export const fetchProducts = (page = 1, limit = 8) => {
         try {
             dispatch(productSlice.actions.productsFetching());
 
-            const response = await axios.get<ProductState[]>(`https://fakestoreapi.com/products`)
+            const response = await axios.get<ProductState[]>(`https://fakestoreapi.com/products?limit=${limit}`)
 
             dispatch(productSlice.actions.productsFetchingSuccess(response.data))
         } catch (e) {
