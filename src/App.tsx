@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classes from './App.module.scss';
-import ProductList from './components/productList/ProductList';
-
+import Router from './components/Router';
 
 function App() {
   
   return (
     <div className={classes.App}>
-      <header>
-        
-      </header>
-      <main>
-        <ProductList/>
-      </main>
+      <header></header>
+      <Router/>
     </div>
   );
 }

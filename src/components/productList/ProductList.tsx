@@ -13,7 +13,7 @@ const ProductList: FC = () => {
     }, [])
     
     return (
-        <div>
+        <section>
             {isLoading && <h1>Загрузка...</h1>}
             {error && <h1>{error}</h1>}
             <ul className={classes.productList}>    
@@ -21,7 +21,7 @@ const ProductList: FC = () => {
                     <ProductItem key={product.id} id={product.id} title={product.title} price={product.price} image={product.image}/>
                 )}
             </ul>
-        </div>
+        </section>
     );
 };
 
