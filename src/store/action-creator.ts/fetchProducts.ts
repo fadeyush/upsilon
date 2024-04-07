@@ -3,7 +3,7 @@ import { AppDispatch } from "../store";
 import { ProductState } from "../../types/products";
 import { productSlice } from "../reducers/ProductsSlice";
 
-export const fetchProducts = (page = 1, limit = 8) => {
+export const fetchProducts = (limit = 8) => {
     return async(dispatch: AppDispatch) => {
         try {
             dispatch(productSlice.actions.productsFetching());

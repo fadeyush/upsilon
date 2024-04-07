@@ -1,0 +1,28 @@
+.productsCatalog {
+
+}
+
+.productsCatalog__list {
+    display: flex;
+    
+    justify-content: center;
+    gap: 70px;
+    align-items: center;
+    flex-wrap: wrap;
+
+    list-style: none;
+}
+
+.productsCatalog__title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.productsCatalog__buttonWrapper {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}

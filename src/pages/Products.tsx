@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
-import ProductList from '../components/productList/ProductList';
+import React, { FC} from 'react';
+import ProductsCatalog from '../components/productCatalog/ProductsCatalog';
 
 const Products: FC = () => {
     return (
         <main>
-            <ProductList/>
+            <ProductsCatalog/>
         </main>
     );
 };
