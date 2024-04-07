@@ -14,8 +14,9 @@ const ProductList: FC = () => {
     
     return (
         <section>
-            {isLoading && <h1>Загрузка...</h1>}
-            {error && <h1>{error}</h1>}
+            {isLoading && <h2>Загрузка...</h2>}
+            {error && <h2>{error}</h2>}
+            <h2 className={classes.productList__title}>Карточки товаров</h2>
             <ul className={classes.productList}>    
                 {products.map(product=>
                     <ProductItem key={product.id} id={product.id} title={product.title} price={product.price} image={product.image}/>
