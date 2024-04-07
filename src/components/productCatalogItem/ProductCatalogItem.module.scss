@@ -1,5 +1,5 @@
 .productCatalogItem {
-    width: 200px;
+    width: 230px;
     height: 300px;
 
     display: flex;
@@ -19,7 +19,6 @@
     }
 
     text-align: center;
-    cursor: pointer;
 }
 
 .productCatalogItem__title {
@@ -27,7 +26,6 @@
     align-items: center;
     justify-content: center;
     height: 100px;
-    margin-bottom: 10px;
 }
 
 .productCatalogItem__price {
