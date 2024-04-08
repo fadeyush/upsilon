@@ -1,12 +1,12 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import classes from './AddedProductList.module.scss';
-import { useAppSelector } from '../../hooks/redux';
+import { AddProductProps } from '../../types/addproduct';
 
 const AddedProductList: FC = () => {
-    const { addedProductList} = useAppSelector(state => state.addedProductReducer);
-    const columnsName = [
-        {Header: 'Дата создание',accessor: 'date',},{Header: 'Название',accessor: 'title',},{ Header: 'Цена',accessor: 'price',},{Header: 'Описание',accessor: 'description',},{Header: 'Опубликовано',accessor: 'isPublished',}];
+    const addedProductList: AddProductProps[] = JSON.parse(localStorage.getItem('addedProductList')!) || [];
 
+    const columnsName = [
+        {Header: 'Дата создание',accessor: 'date',},{Header: 'Название',accessor: 'title',},{ Header: 'Цена',accessor: 'price',},{Header: 'Описание',accessor: 'description',},{Header: 'Опубликовано',accessor: 'isPublished'}];
     return (
         <table className={classes.AddedProductList}>
             <thead>
@@ -18,12 +18,12 @@ const AddedProductList: FC = () => {
             </thead>
             <tbody>
                 {addedProductList.map(product=>
-                    <tr className={classes.AddedProductList__info}>
-                         <td key={product.titleAddProduct}>{product.dateAddProduct}</td>
-                         <td key={product.titleAddProduct}>{product.titleAddProduct}</td>
-                         <td key={product.titleAddProduct}>{product.priceAddProduct}</td>
-                         <td key={product.titleAddProduct}>{product.descriptionAddProduct}</td>
-                         <td key={product.titleAddProduct}>{product.isAddProductPublished ? 'да' : 'нет'}</td>
+                    <tr id={product.idAddProduct} key={product.idAddProduct} className={classes.AddedProductList__info}>
+                         <td>{product.dateAddProduct}</td>
+                         <td>{product.titleAddProduct}</td>
+                         <td>{product.priceAddProduct}</td>
+                         <td>{product.descriptionAddProduct}</td>
+                         <td>{product.isAddProductPublished ? 'да' : 'нет'}</td>
                     </tr>
                 )}
             </tbody>

@@ -1,4 +1,5 @@
 export interface AddProductProps {
+    idAddProduct: string;
     titleAddProduct: string;
     priceAddProduct: number;
     descriptionAddProduct: string;

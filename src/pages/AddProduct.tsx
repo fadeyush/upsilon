@@ -10,10 +10,17 @@ import { addedProductSlice } from '../store/reducers/AddedProductSlice';
 
 const AddProduct: FC = () => {
     const {register, setValue, handleSubmit, reset} = useForm<AddProductProps>();
+    const addedProductList: AddProductProps[] = JSON.parse(localStorage.getItem('addedProductList')!) || [];
     const [modal, setModal] = useState<boolean>(false);
     const dispatch = useAppDispatch();
     const date = new Date();
     const dateForSubmit = `${date.getDate() < 10 ? `0${date.getDate()}` : date.getDate()}-${date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth()}-${date.getFullYear()}`;
+
+    useState(()=> {
+        if(addedProductList.length) {
+            dispatch(addedProductSlice.actions.addProductsFromLocal(addedProductList))
+        }
+    })
 
     const submit: SubmitHandler<AddProductProps> = async (date) => {
         addProduct(date);
@@ -22,6 +29,10 @@ const AddProduct: FC = () => {
         dispatch(addedProductSlice.actions.addNewProduct(date));
     }
 
+    function setProductValue() {
+        setValue('dateAddProduct', dateForSubmit);
+        setValue('idAddProduct', JSON.stringify(Date.now()))
+    }
     return (
         <main>
             <h1 className={classes.MyForm__title}>Форма создания продукта</h1>
@@ -42,7 +53,7 @@ const AddProduct: FC = () => {
                     Опубликован:   
                     <input className={classes.MyForm__checkbox} type='checkbox' {...register('isAddProductPublished')}/>
                 </label>
-                <MyButton onClick={()=>setValue('dateAddProduct', dateForSubmit)} className={classes.MyForm__button}>Создать продукт</MyButton>
+                <MyButton onClick={()=>setProductValue()} className={classes.MyForm__button}>Создать продукт</MyButton>
                 <MyModal visible={modal} setVisible={setModal}>Продукт успешно создан!</MyModal>
             </form>
         </main>
