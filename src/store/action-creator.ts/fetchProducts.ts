@@ -3,6 +3,7 @@ import { AppDispatch } from "../store";
 import { ProductState } from "../../types/products";
 import { productSlice } from "../reducers/ProductsSlice";
 import { productItemSlice } from "../reducers/ProductItemSlice";
+import { productListSlice } from "../reducers/ProductListSlice";
 
 export const fetchProducts = (limit = 8) => {
     return async(dispatch: AppDispatch) => {
@@ -30,6 +31,21 @@ export const fetchProductItem = (id: string) => {
         } catch (e) {
             console.log(e)
             dispatch(productItemSlice.actions.productItemFetchingError('Произошла ошибка при загрузке товара!'))
+        }
+    }
+}
+
+export const fetchProductList = () => {
+    return async(dispatch: AppDispatch) => {
+        try {
+            dispatch(productListSlice.actions.productListFetching());
+
+            const response = await axios.get<ProductState[]>(`https://fakestoreapi.com/products`)
+
+            dispatch(productListSlice.actions.productListFetchingSuccess(response.data))
+        } catch (e) {
+            console.log(e)
+            dispatch(productListSlice.actions.productListFetchingError('Произошла ошибка при загрузке товара!'))
         }
     }
 }

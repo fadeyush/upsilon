@@ -18,3 +18,9 @@ export interface ProductItemStateProps {
     isLoading: boolean;
     error: string;
 }
+
+export interface ProductListStateProps {
+    productsList: ProductState[];
+    isLoading: boolean;
+    error: string;
+}

@@ -1,5 +1,5 @@
 .productCatalogItem {
-    width: 230px;
+    width: 250px;
     height: 310px;
 
     display: flex;
@@ -26,6 +26,7 @@
     align-items: center;
     justify-content: center;
     height: 100px;
+    font-size: 16px;
 }
 
 .productCatalogItem__price {

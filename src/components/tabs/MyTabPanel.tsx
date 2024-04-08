@@ -5,6 +5,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import ProductsCatalog from '../productCatalog/ProductsCatalog';
+import ProductList from '../productList/ProductList';
 
 const MyTabPanel: FC = () => {
     const [value, setValue] = useState('1');
@@ -22,7 +23,7 @@ const MyTabPanel: FC = () => {
               <Tab label="Каталог товаров" value="2" />
             </TabList>
           </Box>
-          <TabPanel value="1">Item One</TabPanel>
+          <TabPanel value="1"><ProductList/></TabPanel>
           <TabPanel value="2"> <ProductsCatalog/></TabPanel>
         </TabContext>
       </Box>
