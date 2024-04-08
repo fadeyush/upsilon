@@ -5,15 +5,21 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import MyButton from '../components/UI/button/MyButton';
 import { addProduct } from '../api/fetchProducts';
 import MyModal from '../components/UI/modal/MyModal';
+import { useAppDispatch } from '../hooks/redux';
+import { addedProductSlice } from '../store/reducers/AddedProductSlice';
 
 const AddProduct: FC = () => {
     const {register, setValue, handleSubmit, reset} = useForm<AddProductProps>();
     const [modal, setModal] = useState<boolean>(false);
+    const dispatch = useAppDispatch();
+    const date = new Date();
+    const dateForSubmit = `${date.getDate() < 10 ? `0${date.getDate()}` : date.getDate()}-${date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth()}-${date.getFullYear()}`;
 
     const submit: SubmitHandler<AddProductProps> = async (date) => {
         addProduct(date);
         setModal(true)
         reset();
+        dispatch(addedProductSlice.actions.addNewProduct(date));
     }
 
     return (
@@ -36,7 +42,7 @@ const AddProduct: FC = () => {
                     Опубликован:   
                     <input className={classes.MyForm__checkbox} type='checkbox' {...register('isAddProductPublished')}/>
                 </label>
-                <MyButton onClick={()=>setValue('dateAddProduct', new Date())} className={classes.MyForm__button}>Создать продукт</MyButton>
+                <MyButton onClick={()=>setValue('dateAddProduct', dateForSubmit)} className={classes.MyForm__button}>Создать продукт</MyButton>
                 <MyModal visible={modal} setVisible={setModal}>Продукт успешно создан!</MyModal>
             </form>
         </main>

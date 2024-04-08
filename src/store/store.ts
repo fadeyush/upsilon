@@ -2,11 +2,13 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import productReducer from "./reducers/ProductsSlice";
 import productItemReducer from "./reducers/ProductItemSlice";
 import productListReducer from "./reducers/ProductListSlice";
+import addedProductReducer from "./reducers/AddedProductSlice";
 
 const rootReducer = combineReducers({
     productReducer,
     productItemReducer,
-    productListReducer
+    productListReducer,
+    addedProductReducer
 })
 
 export const setupStore = () => {

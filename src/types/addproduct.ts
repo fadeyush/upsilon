@@ -3,5 +3,9 @@ export interface AddProductProps {
     priceAddProduct: number;
     descriptionAddProduct: string;
     isAddProductPublished: boolean;
-    dateAddProduct: Date;
+    dateAddProduct: string;
+}
+
+export interface AddedProductProps {
+    addedProductList: AddProductProps[];
 }
