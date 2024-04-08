@@ -20,11 +20,14 @@ const MyTabPanel: FC = () => {
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
               <Tab label="Список товаров" value="1" />
-              <Tab label="Каталог товаров" value="2" />
+              <Tab label="Созданные товары" value="2" />
             </TabList>
           </Box>
-          <TabPanel value="1"><ProductList/></TabPanel>
-          <TabPanel value="2"> <ProductsCatalog/></TabPanel>
+          <TabPanel value="1">
+            <ProductList/>
+            <ProductsCatalog/>
+          </TabPanel>
+          <TabPanel value="2"> </TabPanel>
         </TabContext>
       </Box>
     );

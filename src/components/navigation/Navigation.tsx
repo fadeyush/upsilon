@@ -7,6 +7,7 @@ const Navigation: FC = () => {
     return (
         <nav className={classes.Navigation}>
             <Link to={Pages.products}>Все продукты</Link>
+            <Link to={Pages.addProduct}>Создать продукт</Link>
         </nav>
     );
 };

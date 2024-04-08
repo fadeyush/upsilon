@@ -2,7 +2,8 @@ import { FC } from "react";
 
 export enum Pages {
     products = '/products',
-    productItem = '/products/:id'
+    productItem = '/products/:id',
+    addProduct = '/addproduct'
 }
 
 export interface RoutProperties {
