@@ -1,17 +1,18 @@
 import React, { FC, useState } from 'react';
 import classes from '../styles/addProduct.module.scss'
 import { AddProductProps } from '../types/addproduct';
-import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import MyButton from '../components/UI/button/MyButton';
-import axios from 'axios';
 import { addProduct } from '../api/fetchProducts';
+import MyModal from '../components/UI/modal/MyModal';
 
 const AddProduct: FC = () => {
-    const {register, setValue, handleSubmit, formState: {errors}, reset} = useForm<AddProductProps>();
+    const {register, setValue, handleSubmit, reset} = useForm<AddProductProps>();
     const [modal, setModal] = useState<boolean>(false);
 
     const submit: SubmitHandler<AddProductProps> = async (date) => {
         addProduct(date);
+        setModal(true)
         reset();
     }
 
@@ -36,6 +37,7 @@ const AddProduct: FC = () => {
                     <input className={classes.MyForm__checkbox} type='checkbox' {...register('isAddProductPublished')}/>
                 </label>
                 <MyButton onClick={()=>setValue('dateAddProduct', new Date())} className={classes.MyForm__button}>Создать продукт</MyButton>
+                <MyModal visible={modal} setVisible={setModal}>Продукт успешно создан!</MyModal>
             </form>
         </main>
     );
