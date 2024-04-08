@@ -4,7 +4,7 @@ import productItemReducer from "./reducers/ProductItemSlice";
 
 const rootReducer = combineReducers({
     productReducer,
-    productItemReducer
+    productListReducer
 })
 
 export const setupStore = () => {
