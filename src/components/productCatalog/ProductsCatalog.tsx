@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useMemo, useState } from 'react';
 import classes from './ProductsCatalog.module.scss'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import ProductCatalogItem from '../productCatalogItem/ProductCatalogItem';
@@ -16,7 +16,7 @@ const ProductsCatalog: FC = () => {
         {count: 20},
     ]
     
-    useEffect(()=> {
+    useMemo(()=> {
         dispatch(fetchProducts(catalogItemCount))
     }, [catalogItemCount]);
 
