@@ -1,0 +1,46 @@
+.MyForm {
+    margin: 0 auto;
+    width: 500px;
+    margin-top: 50px;
+}
+
+.MyForm__title {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.MyForm__label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.MyForm__input {
+    width: 200px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.MyForm__textarea {
+    resize:vertical;
+    width: 200px;
+    height: 70px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.MyForm__checkbox {
+    width: 20px;
+    height: 20px;
+}
+
+.MyForm__button {
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-size: 16px;
+    height: 40px;
+}

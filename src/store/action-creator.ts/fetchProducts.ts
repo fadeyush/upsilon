@@ -56,11 +56,11 @@ export const fetchAddProduct = (data: AddProductProps) => {
     return async(dispatch: AppDispatch) => {
         try {
             await axios.post('https://fakestoreapi.com/products', {
-                id: Number(data.idAddProduct),
+            data: {
                 title: data.titleAddProduct,
                 price: data.priceAddProduct,
                 description: data.descriptionAddProduct
-            })
+            }})
 
             dispatch(addedProductSlice.actions.addNewProduct(data));
         } catch (e) {
@@ -75,6 +75,24 @@ export const fetchDeleteProduct = (id: string) => {
             axios.delete(`https://fakestoreapi.com/products/${id}`);
 
             dispatch(addedProductSlice.actions.removeProduct(id))
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
+
+export const fetchEditProduct = (id: string, data: AddProductProps) => {
+    return async(dispatch: AppDispatch) => {
+        try {
+            axios.patch(`https://fakestoreapi.com/products/${id}`, {
+                data: {
+                    title: data.titleAddProduct,
+                    price: data.priceAddProduct,
+                    description: data.descriptionAddProduct
+                }}
+            )
+    
+            dispatch(addedProductSlice.actions.editProduct(data))
         } catch (e) {
             console.log(e)
         }

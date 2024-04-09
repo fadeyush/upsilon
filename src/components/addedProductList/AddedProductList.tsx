@@ -7,6 +7,7 @@ import { addedProductSlice } from '../../store/reducers/AddedProductSlice';
 import { fetchDeleteProduct } from '../../store/action-creator.ts/fetchProducts';
 import MyModal from '../UI/modal/MyModal';
 import MyButton from '../UI/button/MyButton';
+import { useNavigate } from 'react-router-dom';
 
 const AddedProductList: FC = () => {
     const {addedProductList} = useAppSelector(state => state.addedProductReducer);
@@ -17,6 +18,7 @@ const AddedProductList: FC = () => {
     const [checked, setChecked] = useState<boolean>(false);
     const publishedaddedProductList: AddProductProps[] = addedProductListfromLocal.filter(product=>product.isAddProductPublished === true);
     const notPublishedaddedProductList: AddProductProps[] = addedProductListfromLocal.filter(product=>product.isAddProductPublished === false);
+    const router = useNavigate();
 
     useEffect(()=> {
         if(addedProductListfromLocal.length && !addedProductList.length) {
@@ -68,6 +70,7 @@ const AddedProductList: FC = () => {
                             <td>{product.priceAddProduct}</td>
                             <td>{product.descriptionAddProduct}</td>
                             <td>{product.isAddProductPublished ? 'да' : 'нет'}</td>
+                            <td className={classes.AddedProductList__delete}><MyButton onClick={()=>router(`/editProduct/${product.idAddProduct}`)}>Редактировать</MyButton></td>
                             <td onClick={()=>handleDeleteProductModal(product.idAddProduct)} className={classes.AddedProductList__delete} id={product.idAddProduct}>x</td>
                         </tr>
                     )
@@ -79,6 +82,7 @@ const AddedProductList: FC = () => {
                             <td>{product.priceAddProduct}</td>
                             <td>{product.descriptionAddProduct}</td>
                             <td>{product.isAddProductPublished ? 'да' : 'нет'}</td>
+                            <td className={classes.AddedProductList__delete}><MyButton onClick={()=>router(`/editProduct/${product.idAddProduct}`)}>Редактировать</MyButton></td>
                             <td onClick={()=>handleDeleteProductModal(product.idAddProduct)} className={classes.AddedProductList__delete}>x</td>
                         </tr>
                      )
