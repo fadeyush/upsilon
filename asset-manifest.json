@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/upsilon/static/css/main.86f717e4.css",
-    "main.js": "/upsilon/static/js/main.e21b21b5.js",
+    "main.css": "/upsilon/static/css/main.bb77734b.css",
+    "main.js": "/upsilon/static/js/main.272afbc3.js",
     "index.html": "/upsilon/index.html",
-    "main.86f717e4.css.map": "/upsilon/static/css/main.86f717e4.css.map",
-    "main.e21b21b5.js.map": "/upsilon/static/js/main.e21b21b5.js.map"
+    "main.bb77734b.css.map": "/upsilon/static/css/main.bb77734b.css.map",
+    "main.272afbc3.js.map": "/upsilon/static/js/main.272afbc3.js.map"
   },
   "entrypoints": [
-    "static/css/main.86f717e4.css",
-    "static/js/main.e21b21b5.js"
+    "static/css/main.bb77734b.css",
+    "static/js/main.272afbc3.js"
   ]
 }
