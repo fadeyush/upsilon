@@ -1,20 +1,36 @@
 import React, { FC } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { router } from './UI/router';
+import { privateRouter, publicRouter } from './UI/router';
+import { useAppSelector } from '../hooks/redux';
 
 const Router: FC = () => {
+    const {isAuth} = useAppSelector(state => state.authReducer);
     return (
-        <Routes>
-            {router.map(route =>
+        <>{isAuth ?
+            <Routes>
+                {privateRouter.map(route =>
+                    <Route
+                        key={route.path}
+                        element={<route.element/>}
+                        path={route.path}
+                    />
+                )}
+                <Route path="/" element={<Navigate to="/products" replace />} />
+                <Route path="/*" element={<Navigate to="/products" replace />} />
+            </Routes>
+            :
+            <Routes>
+            {publicRouter.map(route =>
                 <Route
                     key={route.path}
                     element={<route.element/>}
                     path={route.path}
                 />
             )}
-            <Route path="/" element={<Navigate to="/products" replace />} />
-            <Route path="/*" element={<Navigate to="/products" replace />} />
-        </Routes>
+            <Route path="/*" element={<Navigate to="/login" replace />} />
+            </Routes>
+        }</>
+        
     );
 };
 

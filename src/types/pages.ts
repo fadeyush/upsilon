@@ -4,7 +4,8 @@ export enum Pages {
     products = '/products',
     productItem = '/products/:id',
     addProduct = '/addproduct',
-    editProduct = '/editProduct/:id'
+    editProduct = '/editProduct/:id',
+    login = '/login'
 }
 
 export interface RoutProperties {
