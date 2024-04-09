@@ -17,7 +17,7 @@ export const addedProductSlice = createSlice({
             localStorage.setItem("addedProductList", JSON.stringify(state.addedProductList))
         },
         removeProduct(state, action: PayloadAction<string>) {
-            state.addedProductList.filter(product => product.dateAddProduct !== action.payload)
+            state.addedProductList=state.addedProductList.filter(product => product.idAddProduct !== action.payload)
             localStorage.setItem("addedProductList", JSON.stringify(state.addedProductList))
         }
     },

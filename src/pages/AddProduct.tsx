@@ -1,32 +1,32 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import classes from '../styles/addProduct.module.scss'
 import { AddProductProps } from '../types/addproduct';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import MyButton from '../components/UI/button/MyButton';
-import { addProduct } from '../api/fetchProducts';
 import MyModal from '../components/UI/modal/MyModal';
-import { useAppDispatch } from '../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { addedProductSlice } from '../store/reducers/AddedProductSlice';
+import { fetchAddProduct } from '../store/action-creator.ts/fetchProducts';
 
 const AddProduct: FC = () => {
+    const {addedProductList} = useAppSelector(state => state.addedProductReducer);
     const {register, setValue, handleSubmit, reset} = useForm<AddProductProps>();
-    const addedProductList: AddProductProps[] = JSON.parse(localStorage.getItem('addedProductList')!) || [];
+    const addedProductListfromLocal: AddProductProps[] = JSON.parse(localStorage.getItem('addedProductList')!) || [];
     const [modal, setModal] = useState<boolean>(false);
     const dispatch = useAppDispatch();
     const date = new Date();
     const dateForSubmit = `${date.getDate() < 10 ? `0${date.getDate()}` : date.getDate()}-${date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth()}-${date.getFullYear()}`;
 
-    useState(()=> {
-        if(addedProductList.length) {
-            dispatch(addedProductSlice.actions.addProductsFromLocal(addedProductList))
+    useEffect(()=> {
+        if(addedProductListfromLocal.length && !addedProductList.length) {
+            dispatch(addedProductSlice.actions.addProductsFromLocal(addedProductListfromLocal))
         }
     })
 
-    const submit: SubmitHandler<AddProductProps> = async (date) => {
-        addProduct(date);
+    const submit: SubmitHandler<AddProductProps> = (date) => {
+        dispatch(fetchAddProduct(date));
         setModal(true)
         reset();
-        dispatch(addedProductSlice.actions.addNewProduct(date));
     }
 
     function setProductValue() {
