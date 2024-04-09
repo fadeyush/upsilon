@@ -56,7 +56,7 @@ export const fetchAddProduct = (data: AddProductProps) => {
     return async(dispatch: AppDispatch) => {
         try {
             await axios.post('https://fakestoreapi.com/products', {
-                id: data.idAddProduct,
+                id: Number(data.idAddProduct),
                 title: data.titleAddProduct,
                 price: data.priceAddProduct,
                 description: data.descriptionAddProduct
