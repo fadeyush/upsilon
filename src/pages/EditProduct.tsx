@@ -46,7 +46,10 @@ const EditProduct: FC = () => {
 
     return (
         <main>
-            <h1 className={classes.MyForm__title}>Форма редактирования продукта</h1>
+            <div className={classes.MyForm__header}>
+                <h1 className={classes.MyForm__title}>Форма редактирования продукта</h1>
+                <MyButton onClick={()=>handleDeleteProductModal()}>Удалить продукт</MyButton>
+            </div>
             <form className={classes.MyForm} onSubmit={handleSubmit(submit)}>
                 <label className={classes.MyForm__label}>
                     Название продукта: 
@@ -65,11 +68,10 @@ const EditProduct: FC = () => {
                     <input className={classes.MyForm__checkbox} type='checkbox' {...register('isAddProductPublished')}/>
                 </label>
                 <div>
-                <MyButton className={classes.MyForm__buttonEdit}>Отредактировать продукт</MyButton> 
+                    <MyButton className={classes.MyForm__buttonEdit}>Отредактировать продукт</MyButton> 
                 </div>
             </form>
             
-            <MyButton onClick={()=>handleDeleteProductModal()} className={classes.MyForm__buttonDelete}>Удалить продукт</MyButton>
             <MyModal visible={modalDelete} setVisible={setModalDelete}>
                 Вы действительно хотите удалить товар?
                 <div>
