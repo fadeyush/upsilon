@@ -1,10 +1,17 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { privateRouter, publicRouter } from './UI/router';
-import { useAppSelector } from '../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../hooks/redux';
+import { authSlice } from '../store/reducers/AuthSlice';
 
 const Router: FC = () => {
     const {isAuth} = useAppSelector(state => state.authReducer);
+    const dispatch = useAppDispatch();
+    useEffect(() =>{
+        if (localStorage.getItem('auth')) {
+            dispatch(authSlice.actions.logIn())
+        }
+      }, [])
     return (
         <>{isAuth ?
             <Routes>
