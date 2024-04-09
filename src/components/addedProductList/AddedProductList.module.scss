@@ -1,4 +1,15 @@
 .AddedProductList {
+    position: relative;
+
+    .AddedProductList__toggleSwitch {
+        position: absolute;
+        top: -65px;
+        right: 0;
+    }
+
+}
+
+.AddedProductList__table {
     text-align: center;
     margin: auto;
     border-collapse: collapse;
@@ -19,5 +30,9 @@
         color: #283645;
         border: 2px solid #e5e5e5;
         padding: 5px;
+    }
+
+    .AddedProductList__date{
+        width: 200px;
     }
 }
